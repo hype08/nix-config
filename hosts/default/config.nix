@@ -8,8 +8,9 @@ let
 in
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ 
       ./hardware.nix
+      ./users.nix
     ];
 
   # Bootloader.
@@ -68,15 +69,15 @@ in
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.henry = {
-    isNormalUser = true;
-    description = "henry";
-    extraGroups = [ "networkmanager" "wheel" ];
-    initialPassword = "test";
-    packages = with pkgs; [
-    #  thunderbird
-    ];
-  };
+  #users.users.henry = {
+  #  isNormalUser = true;
+  #  description = "henry";
+  #  extraGroups = [ "networkmanager" "wheel" ];
+  #  initialPassword = "test";
+  #  packages = with pkgs; [
+  #  #  thunderbird
+  #  ];
+  #};
 
   # Install firefox.
   programs.firefox.enable = true;
