@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let
+  inherit (import ./variables.nix) keyboardLayout;
+in
 {
   imports =
     [ # Include the results of the hardware scan.
