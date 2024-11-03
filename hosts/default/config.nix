@@ -109,6 +109,9 @@ in
     git
     lazygit
     ripgrep
+    spotify
+    vim
+    wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
