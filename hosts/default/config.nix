@@ -112,6 +112,7 @@ in
     spotify
     vim
     wget
+    whatsapp-for-linux
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
