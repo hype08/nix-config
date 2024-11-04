@@ -108,6 +108,7 @@ in
     curl
     git
     lazygit
+    neovim
     ripgrep
     spotify
     vim
