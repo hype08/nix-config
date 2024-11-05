@@ -23,6 +23,9 @@
 	  ./hosts/default/config.nix
 	  nixos-hardware.nixosModules.lenovo-thinkpad-t480s
           inputs.home-manager.nixosModules.default
+	  {
+	    home-manager.users.henry = import ./hosts/default/home.nix;
+	  }
        ];
     };
   };
