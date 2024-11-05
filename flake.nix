@@ -20,11 +20,11 @@
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-	  ./hosts/default/config.nix
+	  ./hosts/${host}/config.nix
 	  nixos-hardware.nixosModules.lenovo-thinkpad-t480s
           inputs.home-manager.nixosModules.default
 	  {
-	    home-manager.users.henry = import ./hosts/default/home.nix;
+	    home-manager.users.${username} = import ./hosts/${host}/home.nix;
 	  }
        ];
     };
