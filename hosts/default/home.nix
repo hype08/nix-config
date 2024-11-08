@@ -13,6 +13,10 @@ in
   home.homeDirectory = "/home/henry";
   home.stateVersion = "23.11";
 
+  imports = [
+    ../../config/neovim.nix
+  ];
+
   programs.bash = {
       enable = true;
       enableCompletion = true;
@@ -30,18 +34,6 @@ in
     enable = true;
     userName = "${gitUsername}";
     userEmail = "${gitEmail}";
-  };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      telescope-nvim
-      telescope-fzf-native-nvim
-    ];
   };
 }
 
