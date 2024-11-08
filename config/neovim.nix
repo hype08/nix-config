@@ -52,6 +52,9 @@
         telescope-fzf-native-nvim
         vim-tmux-navigator
       ];
+      extraLuaConfig = ''
+        ${builtins.readFile ./nvim/options.lua}
+      '';
     };
   };
 }
