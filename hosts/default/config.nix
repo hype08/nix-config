@@ -108,6 +108,7 @@ in
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     curl
+    dunst #notifications
     git
     lazygit
     neovim
@@ -154,4 +155,8 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
+  # Desktop portal interactions
+  xdg.portal.enable = true; 
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 }
+
