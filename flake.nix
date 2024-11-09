@@ -8,9 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    hyprland.url = "github:hyprwm/Hyprland";    
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, hyprland, ... }@inputs: 
     let
       host = "default";
       username = "henry";
@@ -26,6 +27,7 @@
         modules = [
           ./hosts/${host}/config.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t480s
+          hyprland.nixosModules.default
           home-manager.nixosModules.default
           {
             home-manager = {

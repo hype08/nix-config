@@ -33,19 +33,6 @@ in
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -82,6 +69,42 @@ in
   # Install firefox.
   programs.firefox.enable = true;
 
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";  # Helps with cursor issues
+    XCURSOR_SIZE = "24";
+    XDG_SESSION_TYPE = "wayland";
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    # For nvidia:
+    # GBM_BACKEND = "nvidia-drm";
+    # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    # WLR_RENDERER = "vulkan";
+  };
+
+  # You might also want these for better Wayland/Hyprland support
+  security.pam.services.swaylock = {};  # For screen locking
+  
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  # If you're using Bluetooth:
+  services.blueman.enable = true;
+
+  # For better font handling
+  fonts.enableDefaultPackages = true;
+
+  # Also, since you're using both GNOME and Hyprland, you might want:
+  programs.dconf.enable = true;
+
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+  
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -103,17 +126,27 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
+    alacritty
+    brave
+    blueman
     curl
+    dolphin
+    dunst
     git
+    killall
     lazygit
+    libnotify
     neovim
+    networkmanagerapplet
+    pipewire
     ripgrep
     spotify
     vim
+    waybar
     wget
     whatsapp-for-linux
+    wl-clipboard
+    wofi
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
