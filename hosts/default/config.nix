@@ -1,3 +1,4 @@
+
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
@@ -60,6 +61,17 @@ in
         popups = 12;
       };
     };
+  };
+
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts-emoji
+      noto-fonts-cjk-sans
+      font-awesome
+      # Commenting Symbola out to fix install this will need to be fixed or an alternative found.
+      # symbola
+      material-icons
+    ];
   };
 
   # Bootloader.
