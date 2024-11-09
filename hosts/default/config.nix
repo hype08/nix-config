@@ -112,6 +112,7 @@ in
     lazygit
     neovim
     ripgrep
+    swww # Wallpapers
     spotify
     vim
     (waybar.overrideAttrs (oldAttrs: {
