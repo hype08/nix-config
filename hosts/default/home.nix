@@ -15,6 +15,7 @@ in
 
   imports = [
     ../../config/neovim.nix
+    ../../config/waybar.nix
   ];
 
   programs = {

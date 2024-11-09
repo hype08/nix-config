@@ -1,4 +1,8 @@
-{ pkgs, inputs, ... }:
+{ pkgs, host, inputs, ... }:
+let
+  betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
+  inherit (import ../hosts/${host}/variables.nix) clock24h;
+in
 {
   # Configure & Theme Waybar
   programs.waybar = {
@@ -15,7 +19,6 @@
           "pulseaudio"
           "cpu"
           "memory"
-          "idle_inhibitor"
         ];
         modules-right = [
           "custom/hyprbindings"
@@ -37,7 +40,7 @@
           on-scroll-down = "hyprctl dispatch workspace e-1";
         };
         "clock" = {
-          format = '' {:L%H:%M}'' #24H or 12H '' {:L%I:%M %p}'';
+          format = if clock24h == true then '' {:L%H:%M}'' else '' {:L%I:%M %p}'';
           tooltip = true;
           tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
         };
@@ -107,22 +110,14 @@
         };
         "custom/startmenu" = {
           tooltip = false;
-          format = "";
+          # format = "";
           # exec = "rofi -show drun";
           on-click = "sleep 0.1 && rofi-launcher";
         };
         "custom/hyprbindings" = {
           tooltip = false;
-          format = "󱕴";
+          # format = "󱕴";
           on-click = "sleep 0.1 && list-hypr-bindings";
-        };
-        "idle_inhibitor" = {
-          format = "{icon}";
-          format-icons = {
-            activated = "";
-            deactivated = "";
-          };
-          tooltip = "true";
         };
         "custom/notification" = {
           tooltip = false;
@@ -148,7 +143,8 @@
             warning = 30;
             critical = 15;
           };
-          format = "{icon} {capacity}%";
+          format = "{capacity}%";
+          # format = "{icon} {capacity}%";
           format-charging = "󰂄 {capacity}%";
           format-plugged = "󱘖 {capacity}%";
           format-icons = [
@@ -167,81 +163,6 @@
           tooltip = false;
         };
       }
-    ];
-    style = concatStrings [
-      ''
-        * {
-          font-family: JetBrainsMono Nerd Font Mono;
-          font-size: 16px;
-          border-radius: 0px;
-          border: none;
-          min-height: 0px;
-        }
-        window#waybar {
-          background: rgba(0,0,0,0);
-        }
-        #workspaces {
-          margin: 4px 4px;
-          padding: 5px 5px;
-          border-radius: 16px;
-        }
-        #workspaces button {
-          font-weight: bold;
-          padding: 0px 5px;
-          margin: 0px 3px;
-          border-radius: 16px;
-          opacity: 0.5;
-          transition: ${betterTransition};
-        }
-        #workspaces button.active {
-          font-weight: bold;
-          padding: 0px 5px;
-          margin: 0px 3px;
-          border-radius: 16px;
-          transition: ${betterTransition};
-          opacity: 1.0;
-          min-width: 40px;
-        }
-        #workspaces button:hover {
-          font-weight: bold;
-          border-radius: 16px;
-          opacity: 0.8;
-          transition: ${betterTransition};
-        }
-        tooltip {
-          border-radius: 12px;
-        }
-        tooltip label {
-        }
-        #window, #pulseaudio, #cpu, #memory, #idle_inhibitor {
-          font-weight: bold;
-          margin: 4px 0px;
-          margin-left: 7px;
-          padding: 0px 18px;
-          border-radius: 24px 10px 24px 10px;
-        }
-        #custom-startmenu {
-          font-size: 28px;
-          margin: 0px;
-          padding: 0px 30px 0px 15px;
-          border-radius: 0px 0px 40px 0px;
-        }
-        #custom-hyprbindings, #network, #battery,
-        #custom-notification, #tray, #custom-exit {
-          font-weight: bold;
-          margin: 4px 0px;
-          margin-right: 7px;
-          border-radius: 10px 24px 10px 24px;
-          padding: 0px 18px;
-        }
-        #clock {
-          font-weight: bold;
-          color: #0D0E15;
-          margin: 0px;
-          padding: 0px 15px 0px 30px;
-          border-radius: 0px 0px 0px 40px;
-        }
-      ''
     ];
   };
 }
