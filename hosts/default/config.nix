@@ -103,6 +103,7 @@ in
     curl
     dunst # Notifications
     git
+    kitty
     lazygit
     neovim
     ripgrep
