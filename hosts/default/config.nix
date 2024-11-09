@@ -106,6 +106,7 @@ in
     kitty
     lazygit
     neovim
+    networkmanagerapplet # In start.sh 
     rofi-wayland
     ripgrep
     spotify
