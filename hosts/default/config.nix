@@ -106,6 +106,7 @@ in
     kitty
     lazygit
     neovim
+    rofi-wayland
     ripgrep
     spotify
     swww # Wallpapers
