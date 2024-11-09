@@ -110,7 +110,7 @@ in
     rofi-wayland
     ripgrep
     spotify
-    swww # Wallpapers
+    hyprpaper # Wallpapers
     vim
     (waybar.overrideAttrs (oldAttrs: {
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
