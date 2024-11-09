@@ -9,33 +9,40 @@ let
 in
 {
   # Home Manager Settings
-  home.username = "henry";
-  home.homeDirectory = "/home/henry";
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
   home.stateVersion = "23.11";
 
   imports = [
     ../../config/neovim.nix
   ];
 
-  programs.bash = {
+  programs = {
+    bash = {
       enable = true;
       enableCompletion = true;
       shellAliases = {
-        g = "lazygit";
-        rebuild = "sudo nixos-rebuild switch --flake $HOME/Documents/nix-config/#default --show-trace";
         ".." = "cd ..";
-        config = "nvim $HOME/Documents/nix-config";
+        config = "nvim $HOME/nix-config";
+        g = "lazygit";
         ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
         rb = "sudo nixos-rebuild switch --flake $HOME/nix-config/#default --show-trace";
         sv = "sudo nvim";
         v = "nvim";
       };
     };
-
-  programs.git = {
-    enable = true;
-    userName = "${gitUsername}";
-    userEmail = "${gitEmail}";
+    git = {
+      enable = true;
+      userName = "${gitUsername}";
+      userEmail = "${gitEmail}";
+    };
+    waybar = {
+      enable = true;
+    };
+    zoxide = {
+      enable = true;
+      enableBashIntegration = true;
+    };
   };
 }
 

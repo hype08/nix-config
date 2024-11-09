@@ -18,24 +18,28 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { 
-          inherit inputs host username;
+      nixosConfigurations = {
+        "${host}" = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit system;
+              inherit inputs;
+              inherit host;
+              inherit username;
+          };
+          modules = [
+            ./hosts/${host}/config.nix
+            nixos-hardware.nixosModules.lenovo-thinkpad-t480s
+            home-manager.nixosModules.default
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs host username; };
+                users.${username} = import ./hosts/${host}/home.nix;
+              };
+            }
+          ];
         };
-        modules = [
-          ./hosts/${host}/config.nix
-          nixos-hardware.nixosModules.lenovo-thinkpad-t480s
-          home-manager.nixosModules.default
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs host username; };
-              users.${username} = import ./hosts/${host}/home.nix;
-            };
-          }
-        ];
       };
     };
 }

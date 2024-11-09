@@ -63,17 +63,6 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  #users.users.henry = {
-  #  isNormalUser = true;
-  #  description = "henry";
-  #  extraGroups = [ "networkmanager" "wheel" ];
-  #  initialPassword = "test";
-  #  packages = with pkgs; [
-  #  #  thunderbird
-  #  ];
-  #};
-
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -101,7 +90,7 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     curl
-    dunst # Notifications
+    dunst
     git
     kitty
     lazygit
@@ -110,7 +99,7 @@ in
     rofi-wayland
     ripgrep
     spotify
-    hyprpaper # Wallpapers
+    hyprpaper
     vim
     (waybar.overrideAttrs (oldAttrs: {
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
@@ -118,6 +107,7 @@ in
     )
     wget
     whatsapp-for-linux
+    zoxide
   ];
 
   environment.sessionVariables = {
