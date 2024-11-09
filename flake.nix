@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }@inputs: 
@@ -38,6 +39,7 @@
                 users.${username} = import ./hosts/${host}/home.nix;
               };
             }
+            inputs.stylix.nixosModules.stylix
           ];
         };
       };
