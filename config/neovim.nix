@@ -60,6 +60,11 @@
         ${builtins.readFile ./nvim/plugins/telescope.lua}
         ${builtins.readFile ./nvim/plugins/todo-comments.lua}
         ${builtins.readFile ./nvim/plugins/treesitter.lua}
+        require("ibl").setup()
+        require("bufferline").setup{}
+        require("lualine").setup({
+          icons_enabled = true,
+        })
       '';
     };
   };

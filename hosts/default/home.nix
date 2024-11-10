@@ -24,8 +24,8 @@ in
       enableCompletion = true;
       shellAliases = {
         ".." = "cd ..";
-        config = "nvim $HOME/nix-config";
         g = "lazygit";
+        nc = "nvim $HOME/nix-config";
         ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
         rb = "sudo nixos-rebuild switch --flake $HOME/nix-config/#default --show-trace";
         sv = "sudo nvim";
