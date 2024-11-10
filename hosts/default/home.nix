@@ -14,9 +14,15 @@ in
   home.stateVersion = "23.11";
 
   imports = [
+    ../../config/fastfetch
     ../../config/neovim.nix
     ../../config/waybar.nix
   ];
+
+  home.file."Pictures/Wallpapers" = {
+    source = ../../config/wallpapers;
+    recursive = true;
+  };
 
   programs = {
     bash = {
