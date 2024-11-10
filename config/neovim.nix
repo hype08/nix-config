@@ -56,6 +56,7 @@
         ${builtins.readFile ./nvim/options.lua}
         ${builtins.readFile ./nvim/keymaps.lua}
         ${builtins.readFile ./nvim/plugins/alpha.lua}
+        ${builtins.readFile ./nvim/plugins/nvim-tree.lua}
         ${builtins.readFile ./nvim/plugins/telescope.lua}
       '';
     };
