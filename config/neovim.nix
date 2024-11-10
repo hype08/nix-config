@@ -59,6 +59,7 @@
         ${builtins.readFile ./nvim/plugins/auto-session.lua}
         ${builtins.readFile ./nvim/plugins/nvim-tree.lua}
         ${builtins.readFile ./nvim/plugins/telescope.lua}
+        ${builtins.readFile ./nvim/plugins/todo-comments.lua}
         ${builtins.readFile ./nvim/plugins/treesitter.lua}
       '';
     };
