@@ -35,7 +35,6 @@
         lspkind-nvim
         lualine-nvim
         luasnip
-        luasnip
         neodev-nvim
         nui-nvim
         nvim-autopairs
