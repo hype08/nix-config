@@ -16,6 +16,7 @@ in
   imports = [
     ../../config/fastfetch
     ../../config/firefox.nix
+    ../../config/hyprland.nix
     ../../config/neovim.nix
     ../../config/waybar.nix
   ];
