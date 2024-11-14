@@ -45,6 +45,20 @@ in
       userName = "${gitUsername}";
       userEmail = "${gitEmail}";
     };
+    kitty = {
+      enable = true;
+      font = {
+        name = "0xproto";
+        size = 15;
+      };
+      settings = {
+        bold_font = "0xproto Bold";
+        italic_font = "0xproto Italic";
+        bold_italic_font = "Oxproto Bold Italic";
+        adjust_line_height = "110%";
+        disable_ligatures = "never";
+      };
+    };
     waybar = {
       enable = true;
     };
