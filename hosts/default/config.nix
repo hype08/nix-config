@@ -16,8 +16,10 @@ in
       WLR_NO_HARDWARE_CURSORS = "1";
     };
     systemPackages = with pkgs; [
+      bat # fzf
       curl
       dunst
+      fd # fzf
       git
       hyprpaper
       kitty
@@ -27,13 +29,14 @@ in
       ripgrep
       rofi-wayland
       spotify
+      tree # fzf
       vim
       wget
       whatsapp-for-linux
-      zoxide
       (waybar.overrideAttrs (oldAttrs: {
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
       }))
+      zoxide
     ];
   };
 

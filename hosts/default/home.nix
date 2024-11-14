@@ -44,6 +44,29 @@ in
         v = "nvim";
       };
     };
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;  # If using zsh
+      enableBashIntegration = true; # If using bash
+      defaultOptions = [
+        "--height 40%"
+        "--layout=reverse"
+        "--border"
+        "--inline-info"
+        "--color=dark"
+        "--color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f"
+        "--color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7"
+      ];
+      defaultCommand = "fd --type f --hidden --follow --exclude .git";
+      fileWidgetCommand = "fd --type f";
+      fileWidgetOptions = [
+        "--preview 'bat --color=always --style=numbers --line-range=:500 {} || kitty +kitten icat --silent {}'"
+      ];
+      changeDirWidgetCommand = "fd --type d";
+      changeDirWidgetOptions = [
+        "--preview 'exa --tree --level=2 --color=always {} || tree -C {} | head -200'"
+      ];
+    };
     git = {
       enable = true;
       userName = "${gitUsername}";
