@@ -26,6 +26,10 @@ in
     recursive = true;
   };
 
+  home.packages = [
+    (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
+  ];
+
   programs = {
     bash = {
       enable = true;
