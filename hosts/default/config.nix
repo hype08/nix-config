@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, nixos-06cb-009a-fingerprint-sensor, ... }:
 let
   inherit (import ./variables.nix) keyboardLayout;
 in
@@ -113,6 +113,15 @@ in
   };
 
   security.rtkit.enable = true;
+  services.fprintd = {
+    enable = true;
+    tod = {
+      enable = true;
+      driver = nixos-06cb-009a-fingerprint-sensor.lib.libfprint-2-tod1-vfs0090-bingch {
+        calib-data-file = ./calib-data.bin;
+      };
+    };
+  };
 
   services = {
     interception-tools = {
