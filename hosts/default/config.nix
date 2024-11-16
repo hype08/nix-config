@@ -21,6 +21,7 @@ in
       dunst
       fd # fzf
       git
+      htop
       hyprpaper
       kitty
       lazygit
