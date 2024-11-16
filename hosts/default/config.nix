@@ -28,6 +28,7 @@ in
       neovim
       networkmanagerapplet
       pavucontrol
+      playerctl
       ripgrep
       rofi-wayland
       spotify
