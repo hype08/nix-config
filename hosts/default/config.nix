@@ -26,6 +26,7 @@ in
       lazygit
       neovim
       networkmanagerapplet
+      pavucontrol
       ripgrep
       rofi-wayland
       spotify
