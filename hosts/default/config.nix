@@ -26,6 +26,7 @@ in
       kitty
       lazygit
       neovim
+      obsidian
       networkmanagerapplet
       pavucontrol
       playerctl
