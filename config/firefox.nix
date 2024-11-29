@@ -43,11 +43,16 @@
         # "force_installed" and "normal_installed".
         ExtensionSettings = {
           "*".installation_mode = "blocked"; # blocks all addons except the ones specified below
-          # uBlock Origin:
-          "uBlock0@raymondhill.net" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+          # Dark Reader
+          "addon@darkreader.org" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/4378073/darkreader-4.9.96.xpi";
             installation_mode = "force_installed";
           };
+          # uBlock Origin:
+          # "uBlock0@raymondhill.net" = {
+          #   install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+          #   installation_mode = "force_installed";
+          # };
           # Privacy Badger:
           "jid1-MnnxcxisBPnSXQ@jetpack" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
