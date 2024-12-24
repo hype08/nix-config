@@ -24,6 +24,7 @@ in
       htop
       hyprpaper
       kitty
+      wezterm
       lazygit
       neovim
       obsidian

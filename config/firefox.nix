@@ -58,6 +58,11 @@
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
             installation_mode = "force_installed";
           };
+          # Readwise Highlighter:
+          "{team@readwise.io}" = {
+            install_url = "https://addons.mozilla.org/en-CA/firefox/addon/readwise-highlighter";
+            installation_mode = "force_installed";
+          };
           # Vimium:
           "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/file/4259790/vimium_ff-2.1.2.xpi";

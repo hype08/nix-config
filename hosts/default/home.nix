@@ -30,13 +30,16 @@ in
 
   home.packages = [
     (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
-    
+
     pkgs.go
     pkgs.go-tools
     pkgs.gopls
     pkgs.golangci-lint
     
     pkgs.go_1_23
+    
+    pkgs.pipenv
+    pkgs.python313
   ];
 
   programs = {
