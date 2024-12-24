@@ -11,6 +11,7 @@ in
     "henry" = {
       homeMode = "755";
       isNormalUser = true;
+      shell = pkgs.zsh;
       description = "${gitUsername}";
       extraGroups = [
         "networkmanager"

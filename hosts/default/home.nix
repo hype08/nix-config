@@ -128,7 +128,7 @@ in
         italic_font = "0xproto Italic";
         bold_italic_font = "Oxproto Bold Italic";
         adjust_line_height = "110%";
-        disable_ligatures = "never";
+        term = "xterm-256color";
       };
     };
     waybar = {
@@ -137,6 +137,28 @@ in
     zoxide = {
       enable = true;
       enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
+      initExtra = ''
+        eval "$(zoxide init zsh)"
+      '';
+      shellAliases = {
+        ll = "ls -l";
+        update = "sudo nixos-rebuild switch";
+        
+        ".." = "cd ..";
+        "..." = "cd ../..";
+        g = "lazygit";
+        nc = "nvim $HOME/nix-config";
+        ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
+        rb = "sudo nixos-rebuild switch --flake $HOME/nix-config/#default --show-trace";
+        sv = "sudo nvim";
+        v = "nvim";
+      };
     };
   };
 }

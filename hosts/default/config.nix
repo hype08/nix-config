@@ -15,6 +15,7 @@ in
       NIXOS_OZONE_WL = "1";
       WLR_NO_HARDWARE_CURSORS = "1";
     };
+    shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
       bat # fzf
       curl
@@ -112,6 +113,7 @@ in
         zig.symbol = " ";
       };
     };
+    zsh.enable = true;
   };
 
   security.rtkit.enable = true;
