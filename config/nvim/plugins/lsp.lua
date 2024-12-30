@@ -46,8 +46,6 @@ require'lspconfig'.solargraph.setup{
   root_dir = lspconfig.util.root_pattern("Gemfile", ".git", ".ruby-version")
 }
 
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.marksman.setup{}
 require'lspconfig'.nil_ls.setup{
   settings = {
     ['nil'] = {

@@ -25,18 +25,19 @@ in
       htop
       hyprpaper
       kitty
-      wezterm
       lazygit
       neovim
-      obsidian
       networkmanagerapplet
+      obsidian
       pavucontrol
       playerctl
       ripgrep
       rofi-wayland
+      slack
       spotify
       tree # fzf
       vim
+      wezterm
       wget
       whatsapp-for-linux
       (waybar.overrideAttrs (oldAttrs: {
@@ -114,6 +115,7 @@ in
       };
     };
     zsh.enable = true;
+    mosh.enable = true;
   };
 
   security.rtkit.enable = true;

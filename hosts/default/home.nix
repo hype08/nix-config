@@ -43,23 +43,9 @@ in
   ];
 
   programs = {
-    bash = {
-      enable = true;
-      enableCompletion = true;
-      shellAliases = {
-        ".." = "cd ..";
-        g = "lazygit";
-        nc = "nvim $HOME/nix-config";
-        ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
-        rb = "sudo nixos-rebuild switch --flake $HOME/nix-config/#default --show-trace";
-        sv = "sudo nvim";
-        v = "nvim";
-      };
-    };
     fzf = {
       enable = true;
       enableZshIntegration = true;  # If using zsh
-      enableBashIntegration = true; # If using bash
       defaultOptions = [
         "--height 40%"
         "--layout=reverse"
@@ -136,7 +122,6 @@ in
     };
     zoxide = {
       enable = true;
-      enableBashIntegration = true;
       enableZshIntegration = true;
     };
     zsh = {
