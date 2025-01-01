@@ -3,6 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,7 +14,7 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, ghostty, ... }@inputs: 
     let
       host = "default";
       username = "henry";
@@ -28,6 +31,11 @@
               inherit username;
           };
           modules = [
+            {
+              environment.systemPackages = [
+                ghostty.packages.x86_64-linux.default
+              ];
+            }
             ./hosts/${host}/config.nix
             nixos-hardware.nixosModules.lenovo-thinkpad-t480s
             home-manager.nixosModules.default

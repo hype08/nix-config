@@ -17,6 +17,7 @@ in
     };
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
+      # kitty
       bat # fzf
       curl
       dunst
@@ -24,7 +25,6 @@ in
       git
       htop
       hyprpaper
-      kitty
       lazygit
       neovim
       networkmanagerapplet
@@ -36,6 +36,7 @@ in
       slack
       spotify
       tree # fzf
+      unzip
       vim
       wezterm
       wget
@@ -43,6 +44,7 @@ in
       (waybar.overrideAttrs (oldAttrs: {
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
       }))
+      zip
       zoxide
     ];
   };

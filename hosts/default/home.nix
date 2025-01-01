@@ -27,6 +27,10 @@ in
     recursive = true;
   };
 
+  home.file.".config/ghostty/config" = {
+    source = ../../config/ghostty/config;
+    recursive = true;
+  };
 
   home.packages = [
     (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
@@ -101,20 +105,6 @@ in
             shadow_passes = 2;
           }
         ];
-      };
-    };
-    kitty = {
-      enable = true;
-      font = {
-        name = "0xproto";
-        size = 15;
-      };
-      settings = {
-        bold_font = "0xproto Bold";
-        italic_font = "0xproto Italic";
-        bold_italic_font = "Oxproto Bold Italic";
-        adjust_line_height = "110%";
-        term = "xterm-256color";
       };
     };
     waybar = {
