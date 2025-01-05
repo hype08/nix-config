@@ -8,6 +8,7 @@ in
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    kernelModules = [ "btusb" ];
   };
 
   environment = {
@@ -17,11 +18,13 @@ in
     };
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
-      # kitty
-      bat # fzf
+      bat
+      bluez
+      bluez-tools
+      blueman
       curl
       dunst
-      fd # fzf
+      fd
       git
       htop
       hyprpaper
@@ -35,7 +38,7 @@ in
       rofi-wayland
       slack
       spotify
-      tree # fzf
+      tree
       unzip
       vim
       wezterm
@@ -56,7 +59,19 @@ in
     noto-fonts-emoji
   ];
 
-  hardware.pulseaudio.enable = false;
+  hardware = {
+    pulseaudio.enable = false;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      settings = {
+        General = {
+          Enable = "Source,Sink,Media,Socket";
+          Experimental = true;
+        };
+      };
+    };
+  };
 
   i18n.defaultLocale = "en_CA.UTF-8";
 
@@ -133,14 +148,16 @@ in
               EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
       '';
     };
+    blueman.enable = true;
     pipewire = {
+      enable = true;
       alsa = {
         enable = true;
         support32Bit = true;
       };
-      enable = true;
-      jack.enable = true;
       pulse.enable = true;
+      jack.enable = true;
+      wireplumber.enable = true;
     };
     printing.enable = true;
     xserver = {
