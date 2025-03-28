@@ -61,6 +61,7 @@ in
 
   hardware = {
     pulseaudio.enable = false;
+    keyboard.qmk.enable = true;
     bluetooth = {
       enable = true;
       powerOnBoot = true;
